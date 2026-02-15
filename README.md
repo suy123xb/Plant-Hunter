@@ -4,6 +4,8 @@
 
 ![开始界面欢迎页](assets/images/01-cover.png)
 
+![地图详情](assets/images/04-map-detail.png)
+
 ![草之境介绍页](assets/images/06-grass-intro.png)
 
 ---
