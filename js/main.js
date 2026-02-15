@@ -1,14 +1,15 @@
 (() => {
   "use strict";
 
-  const { navigateTo, navigateBack, resetToHome, gameState } = window.PlantHunterNavigation;
-  const { playBackground, switchAmbient, playSFX, toggleAudio } = window.PlantHunterAudio;
+  const { navigateTo, navigateBack, resetToHome, gameState, setVolume } = window.PlantHunterNavigation;
+  const { playBackground, switchAmbient, playSFX, toggleAudio, playNarrationForPage, syncMusicVolume, resumeAudioByUserGesture } = window.PlantHunterAudio;
 
   const pageContent = document.getElementById("pageContent");
   const body = document.body;
   const loader = document.getElementById("loader");
   const sceneMenu = document.getElementById("sceneMenu");
   const sceneMenuGrid = document.getElementById("sceneMenuGrid");
+  const navVolume = document.getElementById("navVolume");
   const debugPanel = document.getElementById("debugPanel");
   const debugPageSelect = document.getElementById("debugPageSelect");
   const debugHotspotSelect = document.getElementById("debugHotspotSelect");
@@ -172,6 +173,7 @@
     setupHotspots(pageId, wrapper);
     updateNavBar();
     updateSceneProgress(pageId);
+    playNarrationForPage(pageId);
   }
 
   function setupHotspots(pageId, wrapper) {
@@ -217,11 +219,17 @@
   function updateNavBar() {
     const btnAudio = document.querySelector(".btn-audio");
     btnAudio.textContent = gameState.audioEnabled ? "🔊" : "🔇";
+    if (navVolume) {
+      navVolume.value = String(Math.round((gameState.volume ?? 0.5) * 100));
+    }
   }
 
   function updateSceneProgress(pageId) {
     const match = pageId.match(/(forest|grass|water|sand)/);
-    if (!match) return;
+    if (!match) {
+      switchAmbient(null);
+      return;
+    }
     const sceneKey = match[1];
     if (!gameState.completedScenes.includes(sceneKey)) {
       gameState.completedScenes.push(sceneKey);
@@ -281,6 +289,22 @@
       const enabled = toggleAudio();
       document.querySelector(".btn-audio").textContent = enabled ? "🔊" : "🔇";
     });
+
+    if (navVolume) {
+      navVolume.addEventListener("input", () => {
+        const value = Math.min(100, Math.max(0, Number(navVolume.value) || 0));
+        setVolume(value / 100);
+        syncMusicVolume();
+      });
+    }
+
+    const unlock = () => {
+      resumeAudioByUserGesture();
+      document.removeEventListener("pointerdown", unlock);
+      document.removeEventListener("keydown", unlock);
+    };
+    document.addEventListener("pointerdown", unlock);
+    document.addEventListener("keydown", unlock);
 
     sceneMenu.addEventListener("click", (event) => {
       if (event.target === sceneMenu) {
@@ -580,6 +604,7 @@
   function startGame() {
     buildSceneMenu();
     bindNavButtons();
+    updateNavBar();
     if (DEBUG_ENABLED) {
       bindDebugControls();
       buildDebugCatalog();

@@ -65,6 +65,20 @@ body {
   transform: scale(0.95);
 }
 
+.nav-volume-wrap {
+  width: 100%;
+  font-size: 12px;
+  color: #666666;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.nav-volume {
+  width: 100%;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
 .page-container {
   flex: 1;
   height: 100vh;
