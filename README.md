@@ -56,14 +56,6 @@ python -m http.server 8000
 
 ---
 
-## 📸 预览
-
-<div align="center">
-  <img src="screenshots/preview.png" width="800" alt="项目预览">
-</div>
-
----
-
 ## 🤝 贡献
 
 欢迎提交 Issue 和 Pull Request！
