@@ -1,6 +1,6 @@
 # Plant Hunter
 
-《植物猎人（Plant Hunter）》是一个面向儿童友好公园场景的 AI 互动科普游戏原型。  
+《植物猎人（Plant Hunter）》是一个面向儿童友好公园场景的 AI 互动科普游戏原型。  [点击进入 Plant Hunter](https://suy123xb.github.io/Plant-Hunter/)
 项目通过网页 Demo 呈现世界观、生态分区、场景切换与热区交互，并为后续完整玩法实现提供交互基础。
 
 ## 项目概览
