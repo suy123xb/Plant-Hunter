@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>植物猎人 - The Plant Hunter</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="nav-bar" aria-label="主导航">
+    <button class="nav-btn btn-back" type="button" aria-label="返回">← 返回</button>
+    <button class="nav-btn btn-home" type="button" aria-label="主页">🏠 主页</button>
+    <button class="nav-btn btn-menu" type="button" aria-label="菜单">≡</button>
+    <button class="nav-btn btn-audio" type="button" aria-label="音频">🔊</button>
+  </nav>
+
+  <main class="page-container" aria-live="polite">
+    <div class="page-content" id="pageContent"></div>
+  </main>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="spinner"></div>
+    <div class="loader-text">加载中...</div>
+  </div>
+
+  <div class="scene-menu" id="sceneMenu" aria-hidden="true">
+    <div class="scene-menu-panel" role="dialog" aria-label="场景菜单">
+      <div class="scene-menu-title">快捷导航</div>
+      <div class="scene-menu-grid" id="sceneMenuGrid"></div>
+      <button class="button scene-menu-close" type="button">关闭</button>
+    </div>
+  </div>
+
+  <div class="debug-panel hidden" id="debugPanel" aria-hidden="true">
+    <h4>热区调试模式</h4>
+    <div class="debug-row">
+      <label>页面
+        <select id="debugPageSelect"></select>
+      </label>
+    </div>
+    <div class="debug-row">
+      <label>热区清单
+        <select id="debugHotspotSelect"></select>
+      </label>
+    </div>
+    <div class="debug-actions">
+      <button type="button" id="debugPick">选择并放置</button>
+    </div>
+    <div class="debug-row">
+      <label>宽度(%)<input type="number" id="debugWidth" min="1" max="100" step="0.5" value="16"></label>
+      <label>高度(%)<input type="number" id="debugHeight" min="1" max="100" step="0.5" value="12"></label>
+    </div>
+    <div class="debug-row">
+      <label>名称<input type="text" id="debugLabel" value="按钮"></label>
+    </div>
+    <div class="debug-actions">
+      <button type="button" id="debugCopy">复制</button>
+      <button type="button" id="debugClear">清除</button>
+      <button type="button" id="debugExport">导出模板</button>
+    </div>
+    <div class="debug-output" id="debugOutput">按 D 开关调试。先选热区逻辑，再点击图片放置。</div>
+  </div>
+
+  <div class="debug-toast" id="debugToast">已复制热区代码</div>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="hotspot-overrides.template.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
