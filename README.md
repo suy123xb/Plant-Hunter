@@ -99,6 +99,7 @@ npx serve .
 ## GitHub Pages 部署
 
 推荐使用仓库根目录直接部署（无需构建）：
+当前仓库不包含自动部署工作流，请在 GitHub 页面中手动配置。
 
 1. 打开仓库 `Settings` -> `Pages`
 2. `Source` 选择 `Deploy from a branch`
