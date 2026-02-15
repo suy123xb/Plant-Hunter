@@ -2,8 +2,10 @@
 
 > 基于游戏场景化的雄安儿童友好型公园设计
 
-[![在线演示](https://img.shields.io/badge/演示-在线访问-success)](https://你的用户名.github.io/plant-hunter/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![开始界面欢迎页](assets/images/01-cover.png)
+
+![草之境介绍页](assets/images/06-grass-intro.png)
+
 
 ---
 
